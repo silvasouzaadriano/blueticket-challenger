@@ -72,7 +72,9 @@ describe('Users', () => {
         email: 'douglasporto@brainmind.com.br',
         password: '123',
       });
-    expect(response.body.error).toBe('password must be at least 6 characters');
+    expect(response.body.error).toBe(
+      'senha deve ter ter pelo menos 6 caracteres'
+    );
   });
   it('Should not be able register when send password with more 10 characters', async () => {
     const response = await request(app)

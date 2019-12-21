@@ -9,7 +9,7 @@ import SessionController from './app/controllers/SessionController';
 /* MIDDLEWARES */
 import { authMiddleware, authCreateSession } from './app/middlewares/auth';
 import { createUser, updateUser } from './app/middlewares/UserMiddleware';
-import { createEvent } from './app/middlewares/EventMiddleware';
+import { createEvent, updateEvent } from './app/middlewares/EventMiddleware';
 
 /* CONTROLLERS */
 import FileController from './app/controllers/FileController';
@@ -96,7 +96,7 @@ routes.put('/users', updateUser, UserController.update);
 /* Event */
 routes.post('/events', createEvent, EventController.store);
 routes.get('/events', EventController.index);
-routes.put('/events/:id', EventController.update);
+routes.put('/events/:id', updateEvent, EventController.update);
 routes.delete('/events/:id', EventController.delete);
 
 /**
