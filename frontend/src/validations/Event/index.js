@@ -12,16 +12,19 @@ const location = Yup.string().max(
   150,
   'A localização não pode excer 150 caracteres!'
 );
-const date = Yup.date('Data inválida!');
+const date = Yup.string();
 
 const schema = Yup.object().shape({
+  location: location.required('A localização não pode ser em branco!'),
+  date: date.transform(value => (!value ? undefined : value))
+          .required('A data não pode ser em branco.'),
+  description: description.required('Descrição não pode ser em branco!'),
+  title: title.required('O nome do evento não pode ser em branco!'),
   banner_id: Yup.number()
     .transform(value => (!value ? undefined : value))
     .required('Banner é Obrigatório'),
-  title: title.required('O nome do evento não pode ser em branco!'),
-  description: description.required('Descrição não pode ser em branco!'),
-  date: date.required('A data não pode ser em branco.'),
-  location: location.required('A localização não pode ser em branco!'),
+
+
 });
 
 export default schema;

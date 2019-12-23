@@ -102,7 +102,7 @@ export default function Event({ match }) {
           </header>
           {event.banner && (
             <Banner>
-              <img src={event.banner.url} alt="" />
+              <img src={event.banner.url} alt="Banner" />
             </Banner>
           )}
           <Content>

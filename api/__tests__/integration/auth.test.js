@@ -10,6 +10,7 @@ describe('Authenticate', () => {
 
   it('Should be able authenticate', async () => {
     const user = await factory.create('User', {
+      name: 'Pedro',
       password: '123123',
     });
 
@@ -29,13 +30,13 @@ describe('Authenticate', () => {
         password: '123123',
       });
 
-    expect(response.body.error).toBe('e-mail is a required field');
+    expect(response.body.error).toBe('e-mail é um campo obrigatório');
   });
   it('Should not be able authenticate when send e-mail invalid', async () => {
     const response = await request(app)
       .post('/sessions')
       .send({
-        email: 'douglasporto',
+        email: 'adrianosouza',
         password: '123123',
       });
 
@@ -45,33 +46,34 @@ describe('Authenticate', () => {
     const response = await request(app)
       .post('/sessions')
       .send({
-        email: 'douglasporto@brainmind.com.br',
+        email: 'silva.souza.adriano@gmail.com',
         password: '123123',
       });
 
-    expect(response.body.error).toBe('User not exist');
+    expect(response.body.error).toBe('Usuário não existe!');
   });
   it('Should not be able authenticate when not send password', async () => {
     const response = await request(app)
       .post('/sessions')
       .send({
-        email: 'douglasporto@brainmin.com.br',
+        email: 'silva.souza.adriano@gmail.com',
       });
 
-    expect(response.body.error).toBe('password is a required field');
+    expect(response.body.error).toBe('senha é um campo obrigatório');
   });
   it('Should not be able authenticate when send password invalid', async () => {
     await factory.create('User', {
-      email: 'douglasporto@brainmind.com.br',
+      name: 'João Souza',
+      email: 'demo@gmail.com',
       password: '123123',
     });
     const response = await request(app)
       .post('/sessions')
       .send({
-        email: 'douglasporto@brainmind.com.br',
+        email: 'demo@gmail.com',
         password: '123456',
       });
 
-    expect(response.body.error).toBe('Password does not match');
+    expect(response.body.error).toBe('Senha não combina!');
   });
 });

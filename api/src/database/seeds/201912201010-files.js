@@ -3,8 +3,8 @@ const date = new Date();
 const file = [
   {
     id: 1,
-    name: 'react2.jpeg',
-    path: 'example/react2.jpeg',
+    name: 'rocketseat.jpeg',
+    path: 'example/rocketseat.jpeg',
     type: 'banner',
     created_at: date,
     updated_at: date,
@@ -19,24 +19,8 @@ const file = [
   },
   {
     id: 3,
-    name: 'react.jpeg',
-    path: 'example/react.jpeg',
-    type: 'banner',
-    created_at: date,
-    updated_at: date,
-  },
-  {
-    id: 4,
-    name: 'rocketseat.jpg',
-    path: 'example/rocketseat.jpg',
-    type: 'banner',
-    created_at: date,
-    updated_at: date,
-  },
-  {
-    id: 5,
-    name: 'frontsampa.jpeg',
-    path: 'example/frontsampa.jpeg',
+    name: 'rsxp.svg',
+    path: 'example/rsxp.svg',
     type: 'banner',
     created_at: date,
     updated_at: date,
